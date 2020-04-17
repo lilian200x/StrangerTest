@@ -1,0 +1,22 @@
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class  GetLastItem {
+	WebDriver webDriver = null;
+	int countitems;
+	public GetLastItem(WebDriver webDriver) {
+		this.webDriver = webDriver;
+	}	
+	public int GetItem() {
+	WebDriver driver = new ChromeDriver(); 
+	WebElement uploadElement = driver.findElement(By.id("inputImage"));
+	uploadElement.sendKeys("C:\\NewTest\\StrangerPage\\320_strange.jpg");
+	//Save last item   	
+    List<WebElement> elements = driver.findElements(By.xpath("//li[@ng-repeat='item in items']"));
+    
+    return countitems = elements.size()+1;
+	}
+}

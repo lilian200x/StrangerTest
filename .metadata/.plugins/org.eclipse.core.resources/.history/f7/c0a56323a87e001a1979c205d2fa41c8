@@ -1,0 +1,43 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+
+public class TestPage {
+	String page_title=null;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Initialize driver Chrome
+		WebDriver driver = new ChromeDriver();
+		// Set page to open
+		driver.get("http://immense-hollows-74271.herokuapp.com/");
+		// maximize browser
+		driver.manage().window().maximize();
+		// Get Page Title
+		String page_title = driver.getTitle();
+		// Get URL
+		driver.getCurrentUrl();
+		WebElement uploadElement = driver.findElement(By.id("inputImage"));
+		uploadElement.sendKeys("C:\\NewTest\\StrangerPage\\320_strange.jpg");
+		
+	    List<WebElement> elements = driver.findElements(By.className("media-list ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable"));
+	    System.out.println("Number of elements:" +elements.size());
+		
+		//WebElement textElement = driver.findElement(By.xpath("//textarea[@placeholder='Maximum allowed length: 300 characters']"));
+		//textElement.click();
+		//textElement.sendKeys("Get your TShirths!");
+		//WebElement AddItem = driver.findElement(By.xpath("//button[@class='btn pull-right btn-success']"));
+		//AddItem.click();
+		
+		//Delete Item added
+		
+		// Close browser
+		//driver.close();
+		// Display Test Run Successfully
+		System.out.println(page_title);
+		System.out.println(driver.getCurrentUrl());
+	}
+
+}

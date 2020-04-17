@@ -1,0 +1,29 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestPage {
+	String page_title=null;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Initialize driver Chrome
+		WebDriver driver = new ChromeDriver();
+		// Set page to open
+		driver.get("http://immense-hollows-74271.herokuapp.com/");
+		// maximize browser
+		driver.manage().window().maximize();
+		// Get Page Title
+		String page_title = driver.getTitle();
+		// Get URL
+		driver.findElement(By.id("bs-example-navbar-collapse-1")).click();
+		driver.getCurrentUrl();
+				
+		// Close browser
+		//driver.close();
+		// Display Test Run Successfully
+		System.out.println(page_title);
+		System.out.println(driver.getCurrentUrl());
+	}
+
+}

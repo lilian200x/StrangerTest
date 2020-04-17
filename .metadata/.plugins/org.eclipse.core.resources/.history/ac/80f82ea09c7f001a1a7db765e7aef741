@@ -1,0 +1,59 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class TestPage {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int countitems=0;
+		// Initialize driver Chrome
+		WebDriver driver = new ChromeDriver();
+		// Set page to open
+		driver.get("http://immense-hollows-74271.herokuapp.com/");
+		// maximize browser
+		driver.manage().window().maximize();
+		
+		// Add new Item
+		// Add image to item
+		WebElement uploadElement = driver.findElement(By.id("inputImage"));
+		uploadElement.sendKeys("C:\\NewTest\\StrangerPage\\320_strange.jpg");
+		//Save last item   	
+	    List<WebElement> elements = driver.findElements(By.xpath("//li[@ng-repeat='item in items']"));
+	    // Add text to item	
+	    countitems = elements.size()+1;
+		WebElement textElement = driver.findElement(By.xpath("//textarea[@placeholder='Maximum allowed length: 300 characters']"));
+		textElement.click();
+		textElement.sendKeys("Get your TShirths!");
+		// Add item
+		WebElement AddItem = driver.findElement(By.xpath("//button[@class='btn pull-right btn-success']"));
+		AddItem.click();
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		//Delete Item added
+		driver.findElement(By.xpath("//li["+ countitems +"]/div/div/div[1]/button[2]")).click();
+		//Accept deleting
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id=\"top\"]/div[4]/div/div/div[3]/button[1]")).click();
+		
+		// Find TEXT in list items
+		if (driver.findElement(By.xpath("//p[contains(text(),'Creators: Matt Duffer, Ross Duffer')]"))!=null) {	
+			System.out.println("ITEM WAS FOUNDED");
+		}
+		else	{
+			
+					System.out.println("ITEM WAS NOT FOUNDED");
+		}			
+		// Close browser
+		driver.close();
+		// Display Test Run Successfully
+		System.out.println(driver.getCurrentUrl());
+	}
+
+}

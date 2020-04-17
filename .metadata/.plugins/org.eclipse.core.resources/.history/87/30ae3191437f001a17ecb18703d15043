@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class EnterNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		int number;
+		System.out.println("Enter a number: ");
+		number = input.nextInt();
+		System.out.println("The number entered is: " + number);
+	}
+
+}
